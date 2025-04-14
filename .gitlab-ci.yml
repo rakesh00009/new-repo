@@ -1,0 +1,15 @@
+image: node:18
+
+before_script:
+  - apt-get update && apt-get install -y python3-pip
+  - pip3 install awscli
+  - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+  - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+  - aws configure set default.region $AWS_DEFAULT_REGION
+
+deploy_to_s3:
+  script:
+    - aws s3 sync . s3://your-website-name --delete
+  only:
+    - main
+

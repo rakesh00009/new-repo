@@ -9,7 +9,7 @@ before_script:
 
 deploy_to_s3:
   script:
-    - aws s3 sync . s3://your-website-name --delete
+    - aws s3 sync . s3://static-site-9 --delete
   only:
     - main
 
